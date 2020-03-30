@@ -3,8 +3,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux'; /* code change */
+import { Provider } from 'react-redux'; /* Code Change */
 import shoppingListItemReducer from './reducers/shoppingListItemReducer.js';
 import App from './App';
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(shoppingListItemReducer, window.__REDUX_DEVTOOLS_EXTENSION__()); /* Code Change */
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>, /* Code Change */
+   document.getElementById('root')
+ );
